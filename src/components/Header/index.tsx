@@ -1,15 +1,19 @@
 import { BsFillSunFill, BsFillMoonFill } from 'react-icons/bs';
-import { Container } from './styles';
+import { useTheme } from '../../contexts/themeContext';
+import { Container, Content } from './styles';
 
 function Header() {
-  const light = true;
+  const { toggleTheme, theme } = useTheme();
 
   return (
     <Container>
-      <h1>TODO</h1>
-      <button type="button">
-        {light ? <BsFillMoonFill size={20} /> : <BsFillSunFill size={20} />}
-      </button>
+      <Content>
+        <h1>TODO</h1>
+        <button type="button" onClick={toggleTheme}>
+          {theme.name === 'light' ? <BsFillMoonFill size={20} />
+            : <BsFillSunFill size={20} />}
+        </button>
+      </Content>
     </Container>
   );
 }
